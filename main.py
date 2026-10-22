@@ -15,6 +15,25 @@ def limpar_canal(texto):
     nomes = {"web": "Web", "loja física": "Loja física", "mercado": "Mercado"}
     return nomes.get(texto, texto)
 
+def problemas_do_pedido(pedido):
+    problemas = []
+    if pedido["categoria"] == "sem categoria":
+        problemas.append("categoria")
+    try:
+        if int(pedido["quantidade"]) <= 0:
+
+            problemas.append("quantidade")
+    except ValueError:
+        problemas.append("quantidade")
+    try:
+        if float(pedido["preco_unitario"]) < 0:
+
+            problemas.append("preco_unitario")
+    except ValueError:
+
+        problemas.append("preco_unitario")
+    return problemas
+
 def ler_pedidos(caminho): 
     """Lê o csv e devolve os pedidos e os nomes das colunas."""
     with open(caminho, encoding="utf-8", newline="") as arquivo:
@@ -56,3 +75,16 @@ print("Receita total:", round(receita_total, 2))
 print("Pedidos ignorados por dados vazios:", ignorados)
 print(Counter(p["categoria"] for p in pedidos))
 print(Counter(p["canal_venda"] for p in pedidos))
+
+contagem = Counter()
+afetados = 0
+for pedido in pedidos:
+    problemas = problemas_do_pedido(pedido)
+    if problemas:
+        afetados += 1
+    for campo in problemas:
+        contagem[campo] += 1
+
+print("Problemas por campo:", dict(contagem))
+print("Pedidos afetados:", afetados)
+

@@ -13,8 +13,10 @@ def ler_pedidos(caminho):
 pedidos, colunas = ler_pedidos(ARQUIVO)
 
 print("Colunas:", colunas)
-print("Total de linhas lidas", len(pedidos))
-print("Primeiro pedido:", pedidos[0])
+print("Total de Linhas Lidas:", len(pedidos))
+print("Três primeiros pedidos:")
+for pedido in pedidos[:3]:
+    print(pedido)
 receita_total = 0
 ignorados = 0
 

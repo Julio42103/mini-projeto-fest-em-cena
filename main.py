@@ -1,5 +1,17 @@
 import csv
+import re
+from collections import Counter
 ARQUIVO = "halloween_vendas.csv"
+
+def limpar_categoria(texto): 
+    texto = texto.strip().lower()
+    texto = re.sub(r"[^a-z]", "",texto)
+    return texto.capitalize()
+
+def limpar_canal(texto):
+    texto = texto.strip().lower()
+    nomes = {"web": "Web", "loja física": "Loja física", "mercado": "Mercado"}
+    return nomes.get(texto, texto)
 
 def ler_pedidos(caminho): 
     """Lê o csv e devolve os pedidos e os nomes das colunas."""
@@ -12,11 +24,15 @@ def ler_pedidos(caminho):
 
 pedidos, colunas = ler_pedidos(ARQUIVO)
 
+for pedido in pedidos:
+    pedido["categoria"] = limpar_categoria(pedido["categoria"])
+    pedido["canal_venda"] = limpar_canal(pedido["canal_venda"])
 print("Colunas:", colunas)
 print("Total de Linhas Lidas:", len(pedidos))
 print("Três primeiros pedidos:")
 for pedido in pedidos[:3]:
     print(pedido)
+
 receita_total = 0
 ignorados = 0
 
@@ -36,6 +52,5 @@ for pedido in pedidos:
 
 print("Receita total:", round(receita_total, 2))
 print("Pedidos ignorados por dados vazios:", ignorados)
-
-
-
+print(Counter(p["categoria"] for p in pedidos))
+print(Counter(p["canal_venda"] for p in pedidos))

@@ -6,6 +6,8 @@ ARQUIVO = "halloween_vendas.csv"
 def limpar_categoria(texto): 
     texto = texto.strip().lower()
     texto = re.sub(r"[^a-z]", "",texto)
+    if texto =="":
+        return "sem categoria"    
     return texto.capitalize()
 
 def limpar_canal(texto):

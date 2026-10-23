@@ -1,6 +1,7 @@
 import csv
 import re
 from collections import Counter
+from datetime import datetime
 ARQUIVO = "halloween_vendas.csv"
 
 def limpar_categoria(texto): 
@@ -33,6 +34,13 @@ def problemas_do_pedido(pedido):
 
         problemas.append("preco_unitario")
     return problemas
+
+def ano_mes(texto):
+    try:                
+        data = datetime.strptime(texto.strip(), "%Y-%m-%d %H:%M:%S")
+    except ValueError:
+        return "data inválida"    
+    return data.strftime("%Y-%m")
 
 def ler_pedidos(caminho): 
     """Lê o csv e devolve os pedidos e os nomes das colunas."""
@@ -88,3 +96,12 @@ for pedido in pedidos:
 print("Problemas por campo:", dict(contagem))
 print("Pedidos afetados:", afetados)
 
+por_mes = Counter()
+por_canal = Counter()
+for pedido in pedidos:
+
+    por_mes[ano_mes(pedido["data_venda"])] += 1
+    por_canal[pedido["canal_venda"]] += 1
+
+print("Pedidos por mês:", sorted(por_mes.items()))
+print("Pedidos por canal:", dict(por_canal))

@@ -96,3 +96,12 @@ Outro caso foi a data de entrega: 34 pedidos "Concluído" não tinham data. Um m
 
 Por isso é importante que a limpeza e a validação sejam feitas antes de qualquer modelo. Neste projeto fizemos esse primeiro passo: ler, limpar, validar e contar, para que os dados possam ser usados com confiança.
 
+# Validação extra: datas de entrega
+
+Foi feita uma conferência das datas de entrega (`checar_datas.py`) nos 1500 pedidos:
+
+- 1357 pedidos foram entregues em até 30 dias depois da venda (normal).
+- Nenhuma entrega aparece antes da data da venda.
+- Nenhuma data veio em formato inválido.
+- 143 pedidos estão sem data de entrega: 109 Cancelados (esperado) e 34 Concluídos (problema).
+

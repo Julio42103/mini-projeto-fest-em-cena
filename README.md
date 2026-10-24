@@ -105,3 +105,8 @@ Foi feita uma conferência das datas de entrega (`checar_datas.py`) nos 1500 ped
 - Nenhuma data veio em formato inválido.
 - 143 pedidos estão sem data de entrega: 109 Cancelados (esperado) e 34 Concluídos (problema).
 
+## Conclusão sobre pedidos sem data de entrega
+
+Dos 1500 pedidos, 143 estão sem data de entrega. Desses, 109 são Cancelados, o que é esperado, pois um pedido cancelado não chega a ser entregue. Os outros 34 estão como Concluídos e mesmo assim não têm data de entrega, o que é uma inconsistência.
+
+Um pedido concluído pode estar sem data de entrega por erro operacional de alguém, falha no sistema ou erro de digitação. A empresa deveria investigar esses 34 casos um a um, encontrar a causa e corrigir, para que o problema não aconteça mais.

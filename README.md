@@ -9,7 +9,7 @@ Este projeto usa apenas a biblioteca padrão do Python (`csv`, `re`, `datetime`,
 
 
 ## Autor
-Julio - Curso Fundamentos de Programação, Dados e Machine Learning (turma 04, SCTEC)
+Julio Spengler - Curso Fundamentos de Programação, Dados e Machine Learning (turma 04, SCTEC)
 
 ## O arquivo de dados
 
@@ -96,7 +96,7 @@ Outro caso foi a data de entrega: 34 pedidos "Concluído" não tinham data. Um m
 
 Por isso é importante que a limpeza e a validação sejam feitas antes de qualquer modelo. Neste projeto fizemos esse primeiro passo: ler, limpar, validar e contar, para que os dados possam ser usados com confiança.
 
-# Validação extra: datas de entrega
+## Validação extra: datas de entrega
 
 Foi feita uma conferência das datas de entrega (`checar_datas.py`) nos 1500 pedidos:
 

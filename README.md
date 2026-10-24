@@ -123,3 +123,12 @@ Limitação: o arquivo só tem os meses de agosto a novembro, de dois anos. Não
 Interpretação: 34 pedidos Concluídos estão sem data de entrega, o que indica falha no registro dos dados.
 
 Limitação: os dados mostram que a data está faltando, mas não mostram o motivo. Além disso, pedidos sem data de entrega podem dificultar o faturamento, e por isso precisam ser investigados.
+
+## Justificativa do tratamento dos valores nulos
+
+Foram encontrados 37 pedidos com problemas: 18 com categoria vazia, 12 com preço vazio ou inválido e 7 com quantidade inválida.
+
+Esses pedidos não foram apagados, pois cada um é um pedido real. Um pedido sem categoria, por exemplo, pode ser de um produto diverso, que não é Fantasia nem Acessório. Apagar os pedidos também mudaria o total de 1500 e faria perder informações dos outros campos, que podem estar corretos.
+
+Também não foi inventado nenhum valor para preencher os campos vazios. Chutar um valor distorceria os valores corretos dos outros pedidos e faria o resultado perder a confiabilidade. Por isso, a categoria vazia foi marcada como "sem categoria" e os problemas de preço e quantidade foram contados e relatados, sem alterar os dados originais.
+

@@ -110,3 +110,16 @@ Foi feita uma conferência das datas de entrega (`checar_datas.py`) nos 1500 ped
 Dos 1500 pedidos, 143 estão sem data de entrega. Desses, 109 são Cancelados, o que é esperado, pois um pedido cancelado não chega a ser entregue. Os outros 34 estão como Concluídos e mesmo assim não têm data de entrega, o que é uma inconsistência.
 
 Um pedido concluído pode estar sem data de entrega por erro operacional de alguém, falha no sistema ou erro de digitação. A empresa deveria investigar esses 34 casos um a um, encontrar a causa e corrigir, para que o problema não aconteça mais.
+
+## Interpretação e limitações
+
+**Descoberta 1: outubro concentra as vendas**
+Interpretação: as vendas da loja são sazonais e crescem muito perto do Halloween. Em outubro foram 393 pedidos em 2024 e 410 em 2025, bem mais que nos outros meses.
+
+Limitação: o arquivo só tem os meses de agosto a novembro, de dois anos. Não dá para saber como foram as vendas nos outros meses, então não é possível fazer uma análise mais aprofundada das vendas ao longo do ano.
+
+**Descoberta 2: dados inconsistentes na entrega**
+
+Interpretação: 34 pedidos Concluídos estão sem data de entrega, o que indica falha no registro dos dados.
+
+Limitação: os dados mostram que a data está faltando, mas não mostram o motivo. Além disso, pedidos sem data de entrega podem dificultar o faturamento, e por isso precisam ser investigados.
